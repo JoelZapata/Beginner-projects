@@ -18,14 +18,14 @@ public class MathLab05st
 		System.out.println("E12B47F5 Base-16 converts to " + BaseConverter.fromHexToBin("E12B47F5") + " in Base-2.\n");
 		
 		// The next 2 lines are used in the 90-point versions and above.
-		// System.out.println("1011111011101111 Base-2 converts to " + BaseConverter.fromBinToDec("1011111011101111") + " in Base-10.\n");
-		// System.out.println("11100100100110110 Base-2 converts to " + BaseConverter.fromBinToDec("11100100100110110") + " in Base-10.\n");
+		 System.out.println("1011111011101111 Base-2 converts to " + BaseConverter.fromBinToDec("1011111011101111") + " in Base-10.\n");
+		 System.out.println("11100100100110110 Base-2 converts to " + BaseConverter.fromBinToDec("11100100100110110") + " in Base-10.\n");
 
 		// The next line is used in the 95-point versions and above.		
-		// System.out.println("1011111011101111 Base-2 converts to " + BaseConverter.fromBinToHex("1011111011101111") + " in Base-16.\n");
+		 System.out.println("1011111011101111 Base-2 converts to " + BaseConverter.fromBinToHex("1011111011101111") + " in Base-16.\n");
 
 		// The next line is used in the 100-point versions and above.		
-		// System.out.println("11100100100110110 Base-2 converts to " + BaseConverter.fromBinToHex("11100100100110110") + " in Base-16.\n");
+		 System.out.println("11100100100110110 Base-2 converts to " + BaseConverter.fromBinToHex("11100100100110110") + " in Base-16.\n");
 		
 		//	 The next 3 lines are used in the 105 and 110-point versions.
 		//	 System.out.println("1000 Base-10 converts to " + BaseConverter.fromDecToAny(1000,5) + " in Base-5.\n");
@@ -40,30 +40,45 @@ public class MathLab05st
 
 class BaseConverter
 {
-    public static String fromHexToBin(String hexNum)
+    public static String fromHexToBin(String hex)
     {
-	int binNum = Integer.parseInt(hexNum, 16);
-	Integer.toBinaryString(binNum); 
-    	return ""+binNum;      // return new BigInteger(hexNum, 16);
-    }
-    
+	    String bin = "";
+	    String binFragment = "";
+	    int iHex;
+	    hex = hex.trim();
+	    hex = hex.replaceFirst("0x", "");
+	
+	    for(int i = 0; i < hex.length(); i++){
+	        iHex = Integer.parseInt(""+hex.charAt(i),16);
+	        binFragment = Integer.toBinaryString(iHex);
+	
+	        while(binFragment.length() < 4){
+	            binFragment = "0" + binFragment;
+	        }
+	        bin += binFragment;
+	    }
+	    return bin;
 
-    public static int fromBinToDec(String binNum)
+    }
+
+    public static int fromBinToDec(String bin)
     {
-    	int decNum = 0;
-        
-        // do stuff
-        
-    	return decNum;    	
+    	double decNum = 0;
+			for (int i=0; i<bin.length(); i++){
+      		if (bin.charAt(i) == '1'){
+      				decNum=decNum+ Math.pow(2,bin.length()-1-i);
+     			}
+			}
+	    	
+    	return (int)decNum;    	
     }
 
     
     public static String fromBinToHex(String binNum)
     {
     	String hexNum = "";
-    	
-    	//do stuff
-    	// Integer.parseInt(binOutput, 2)
+    	hexNum=Integer.toHexString(Integer.parseInt(binNum,2));
+    	hexNum=hexNum.toUpperCase();
     	
     	return hexNum;
     }    
@@ -72,7 +87,8 @@ class BaseConverter
     {
     	String newNum = "";
     	
-        // do stuff
+
+    	
     	
     	return newNum;       	
     }
