@@ -63,23 +63,16 @@ class BaseConverter
 
     public static int fromBinToDec(String bin)
     {
-    	double decNum = 0;
-	for (int i=0; i<bin.length(); i++){
-      		if (bin.charAt(i) == '1'){
-      				decNum=decNum+ Math.pow(2,bin.length()-1-i);
-     		}
-	}
-	    	
-    	return (int)decNum;    	
+    	int decNum = Integer.parseInt(binNum, 2);
+    	    	
+    	return decNum;
     }
 
     
     public static String fromBinToHex(String binNum)
     {
-    	String hexNum = "";
-    	hexNum=Integer.toHexString(Integer.parseInt(binNum,2));
-    	hexNum=hexNum.toUpperCase();
-    	
+    	String hexNum = Integer.toHexString(Integer.parseInt(binNum,2)).toUpperCase();
+    	    	
     	return hexNum;
     }    
     
