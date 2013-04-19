@@ -5,6 +5,7 @@
 
 
 import java.util.Scanner;
+import java.lang.Number;
 
 public class MathLab05st
 {
@@ -14,7 +15,7 @@ public class MathLab05st
 		
 		// The next 2 lines are used in all versions.
 		System.out.println("ABCD1234 Base-16 converts to " + BaseConverter.fromHexToBin("ABCD1234") + " in Base-2.\n");
-//		System.out.println("E12B47F5 Base-16 converts to " + BaseConverter.fromHexToBin("E12B47F5") + " in Base-2.\n");
+		System.out.println("E12B47F5 Base-16 converts to " + BaseConverter.fromHexToBin("E12B47F5") + " in Base-2.\n");
 		
 		// The next 2 lines are used in the 90-point versions and above.
 		// System.out.println("1011111011101111 Base-2 converts to " + BaseConverter.fromBinToDec("1011111011101111") + " in Base-10.\n");
@@ -41,12 +42,16 @@ class BaseConverter
 {
     public static String fromHexToBin(String hexNum)
     {
-    	int i = Integer.parseInt(hexNum, 16);
-		int binNum = i;
-		Integer.toBinaryString(i); 
-  	    	
-    	return binNum;
+		    	int binNum = Integer.parseInt(hexNum, 16);
+				Integer.toBinaryString(binNum); 
+
+
+		    	return binNum;
+		    
+		    
+		    // return new BigInteger(hexNum, 16);
     }
+    
 
     public static int fromBinToDec(String binNum)
     {
@@ -65,7 +70,7 @@ class BaseConverter
     	String hexNum = "";
     	
     	
-    	
+    	// Integer.parseInt(binOutput, 2)
     	
     	return hexNum;
     }    
